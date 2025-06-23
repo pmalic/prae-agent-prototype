@@ -1,0 +1,5 @@
+{
+  "description": "Employees Database",
+  "type": "SQLite",
+  "file": "employees.sqlite"
+}

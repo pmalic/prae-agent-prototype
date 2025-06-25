@@ -1,7 +1,9 @@
 from difflib import SequenceMatcher
 
 
-def compute_reward(final_answer: str, expected_answer: str, n_actions: int, optimal_actions: int = 10) -> float:
+def compute_reward(
+    final_answer: str | int | float, expected_answer: str, n_actions: int, optimal_actions: int = 10
+) -> float:
     """
     Reward in [0, 1] combining answer correctness with step-efficiency.
 
@@ -16,6 +18,10 @@ def compute_reward(final_answer: str, expected_answer: str, n_actions: int, opti
     """
     if n_actions <= 0:
         raise ValueError("n_actions must be ≥ 1")
+
+    # If final_answer is not a string, convert it to string
+    if not isinstance(final_answer, str):
+        final_answer = str(final_answer)
 
     # Correctness
     sim = SequenceMatcher(None, final_answer.strip().lower(), expected_answer.strip().lower()).ratio()

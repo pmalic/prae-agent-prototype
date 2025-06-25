@@ -8,7 +8,7 @@ from smolagents import tool
 
 @tool
 def list_data_sources() -> list[dict]:
-    """List all data sources.
+    """List all available data sources.
 
     Returns:
         list[dict]: List of dicts containing info for each data source (name, description, type, etc.)
@@ -105,7 +105,7 @@ def _get_sqlite_db_path(data_source_name: str, info_data: dict) -> Tuple[Optiona
 
 @tool
 def describe_data_source(data_source_name: str) -> str:
-    """Get the description of a data source.
+    """Get the description of a given data source. It's mandatory to read it before querying the data source.
 
     Args:
         data_source_name (str): Name of the data source
@@ -128,7 +128,7 @@ def describe_data_source(data_source_name: str) -> str:
 
 @tool
 def sqlite_get_schema(data_source_name: str) -> str:
-    """Get the schema of a SQLite data source.
+    """Get the database schema of a SQLite data source.
 
     Args:
         data_source_name (str): Name of the data source
